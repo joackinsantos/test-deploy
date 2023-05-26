@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href={% static 'css/main.css' %}>
+
+<div class="container-fluid main-div d-flex flex-column">
+    <div class="upload-div d-flex flex-column mx-auto mb-4">
+        <div class="upload-text-container d-flex justify-content-center mx-3 mt-4 mb-2">
+            <p class="upload-text head-text">Detect head-to-rear contact between pigs</p>
+        </div>
+        <div class="upload-image-container d-flex justify-content-center">
+            <img class="upload-image" src="{{ image }}" alt="default">
+        </div>
+        <!-- Results segment-->
+        <div class="results-container container mt-3 px-5 font-weight-bold">
+            <div class="row text-center">
+              <div class="col results-box-1 mr-1 text-uppercase py-2 align-self-center">
+                Classification
+              </div>
+              <div class="col results-box-2 py-2 align-self-center">
+                {{ class }}
+              </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col results-box-1 mr-1 text-uppercase py-2 align-self-center">
+                    Contact Count
+                  </div>
+                <div class="col results-box-2 py-2 align-self-center">
+                    {{ interaction_count }}
+                </div>
+            </div>
+          </div>
+        <!-- Results segment -->
+    </div>
+    <hr class="hr hr-blurry" />
+    <div class="how-div mt-3 mb-1">
+      <div class="how-title container-fluid text-center mb-4 font-weight-bold">
+          Making Sense of the Results Above
+      </div>
+      <div class="container segment-container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="row text-justify pr-1">
+                  <p class="col-0 mt-2 circle-colored">1</p>
+                  <p class="seg-text col p-1 ml-2 mr-4">
+                    The <b>Classification</b> result provides two possible values: <b>With Contact</b> and <b>Without Contact.</b>
+                    If the result is <b>With Contact</b>, it indicates that the system has detected instances of head-to-rear 
+                    contact or tail biting in the provided image. Otherwise, if the result is <b>Without Contact</b>, it means 
+                    that no such contact was detected.
+                  </p>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="row text-justify pr-1">
+                  <p class="col-0 mt-2 circle-colored">1</p>
+                  <p class="seg-text col p-1 ml-2 mr-4">
+                    Assuming the classification result indicates <b>With Contact</b>, the <b>Contact Count</b> result represents the total 
+                    number of occurrences of head-to-rear contact or tail biting in the provided image. If there is no contact 
+                    detected, the <b>Contact Count</b> will be zero.
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+  <hr class="hr hr-blurry" />
+  <div class="back-button-container d-flex justify-content-center mt-2 mb-4">
+    <a href={% url 'home' %} type="button" class="upload-button btn-back text-uppercase p-2 px-4">
+        <i class="fa-solid fa-house-chimney mr-2"></i>HOME
+    </a>
+  </div>
+</div>
+{% endblock content %}

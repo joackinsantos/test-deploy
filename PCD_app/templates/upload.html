@@ -1,0 +1,63 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href={% static 'css/main.css' %}>
+
+<div class="container-fluid main-div d-flex flex-column">
+    <div class="how-div mt-5 mb-2">
+        <div class="how-title container-fluid text-center mb-4 font-weight-bold">
+            How to Use TailSafe for Pig Tail Biting Detection
+        </div>
+        <div class="container segment-container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="row text-justify pr-1">
+                    <p class="col-0 mt-2 circle">1</p>
+                    <p class="seg-text col p-1 ml-2 mr-4">
+                        Select a pig pen image by clicking on "Choose File" then click the "Upload Image" button to upload it.
+                    </p>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="row text-justify pr-1">
+                    <p class="col-0 mt-2 circle">2</p>
+                    <p class="seg-text col p-1 ml-2 mr-4">
+                        Confirm the selected image by clicking the "Submit and Process" button to initiate image processing.
+                    </p>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="row text-justify pr-1">
+                    <p class="col-0 mt-2 circle">3</p>
+                    <p class="seg-text col p-1 ml-2 mr-4">
+                        View the results to determine if the image contains any contacts and the total counts of contacts detected.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <hr class="hr hr-blurry" />
+    <div class="upload-div d-flex flex-column mx-auto">
+        <div class="upload-text-container d-flex justify-content-center mx-3 mt-1 mb-1">
+            <p class="upload-text head-text">
+                Detect head-to-rear contact between pigs
+            </p>
+        </div>
+        <div class="upload-image-container d-flex justify-content-center">
+            <img class="upload-image" src="{{ image.image.url }}" alt="default">
+        </div>
+        <div class="upload-button-container d-flex justify-content-center mt-5">
+            <a href={% url 'results' %} type="button" class="upload-button btn container-fluid text-uppercase">
+                SUBMIT AND PROCESS
+            </a>
+        </div>
+    </div>
+    <hr class="hr hr-blurry" />
+    <div class="back-button-container d-flex justify-content-center mt-2 mb-4">
+      <a href={% url 'home' %} type="button" class="upload-button btn-back text-uppercase p-2 px-4">
+        <i class="fa-solid fa-arrow-left mr-2"></i>BACK
+      </a>
+    </div>
+</div>
+{% endblock content %}
